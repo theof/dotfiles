@@ -1,3 +1,4 @@
+set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -11,10 +12,12 @@ call vundle#end()
 filetype plugin indent on
 
 syntax on
+
+set laststatus=2
+set background=dark
 set nu
 set foldmethod=syntax
 set ts=4
-set nocompatible
 set colorcolumn=80
 colorscheme solarized
 imap ˙ <Esc>
