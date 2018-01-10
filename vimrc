@@ -15,7 +15,19 @@ filetype plugin indent on
 
 syntax on
 
+"More useful backspace behavior
+set backspace=indent,eol,start
+
+"Better search
+set ignorecase
+set smartcase
+set incsearch
+set showmatch
+set hlsearch
+
+""Use statusbar on all windows
 set laststatus=2
+
 set background=dark
 set nu
 set foldmethod=syntax
