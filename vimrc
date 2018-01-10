@@ -8,6 +8,7 @@ Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
+Plugin 'mcfiredrill/vim-liquidsoap'
 
 call vundle#end()
 
@@ -28,6 +29,7 @@ set hlsearch
 ""Use statusbar on all windows
 set laststatus=2
 
+au BufRead,BufNewFile *.liq set filetype=liquidsoap
 set background=dark
 set nu
 set foldmethod=syntax
