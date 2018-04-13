@@ -37,3 +37,12 @@ set ts=4
 set colorcolumn=80
 colorscheme solarized
 imap ˙ <Esc>
+setl cindent
+setl tabstop=4
+setl noexpandtab
+setl cino=:0,+0,(2,J0,{1,}0,>4,)1,m2
+
+""netrw
+let g:netrw_banner=0
+let g:netrw_liststyle = 3
+map CTRL-E Vexplore
