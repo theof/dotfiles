@@ -42,7 +42,8 @@ setl tabstop=4
 setl noexpandtab
 setl cino=:0,+0,(2,J0,{1,}0,>4,)1,m2
 
+set autochdir
+
 ""netrw
 let g:netrw_banner=0
 let g:netrw_liststyle = 3
-map CTRL-E Vexplore
