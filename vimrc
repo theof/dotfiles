@@ -33,14 +33,11 @@ au BufRead,BufNewFile *.liq set filetype=liquidsoap
 set background=dark
 set nu
 set foldmethod=syntax
-set ts=4
 set colorcolumn=80
 colorscheme solarized
 imap ˙ <Esc>
-setl cindent
-setl tabstop=4
+setl tabstop=2
 setl noexpandtab
-setl cino=:0,+0,(2,J0,{1,}0,>4,)1,m2
 
 set autochdir
 
