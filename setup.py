@@ -1,9 +1,16 @@
 #!/usr/bin/env python3
 import os
+from inspect import isclass
 
 home_dir = os.environ['HOME']
 pwd = os.environ['PWD']
 deps = []
+
+def mkdirp(*args, **kwargs):
+    try:
+        os.mkdir(*args, **kwargs)
+    except FileExistsError:
+        pass
 
 class Link:
 
@@ -12,7 +19,8 @@ class Link:
         if link_name is None:
             self.link_name = os.path.join(home_dir, '.' + target)
         else:
-            self.link_name = link_name
+            self.link_name = os.path.join(home_dir, link_name)
+            mkdirp(os.path.dirname(self.link_name))
 
     def create(self):
         os.system("ln -sf {} {}".format(self.target, self.link_name))
@@ -36,6 +44,27 @@ class Config:
     pre_hook = None
     post_hook = None
 
+"""
+class Distro:
+
+    def __init__(self):
+        pass
+
+    is_candidate = False
+
+    @property
+    def package_manager(self):
+        raise NotImplementedError
+"""
+#
+
+"""
+class ArchLinux(Distro):
+
+    def __init__(self):    
+        pass
+#
+"""
 
 class VimConfig(Config):
     links = [
@@ -49,4 +78,44 @@ class VimConfig(Config):
     def post_hook(self):
         os.system('vim +PluginInstall +qall')
 
-VimConfig().install()
+
+class TmuxConfig(Config):
+    links = [
+        Link("tmux.conf"),
+    ]
+    sys_deps = ['tmux']
+
+class I3Config(Config):
+    links = [
+        Link("i3config", link_name=".config/i3/config"),
+    ]
+    sys_deps = ['i3']
+
+class XConfig(Config):
+    links = [
+        Link("Xresources"),
+        Link("xinitrc")
+    ]
+
+class Base16Shell(Config):
+    links = []
+    def pre_hook(self):
+        os.system("git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell")
+
+class PowerlineConfig(Config):
+    links = [
+        Link("powerline", ".config/powerline"),
+    ]
+    sys_deps = ['powerline']
+
+class ZshConfig(Config):
+    links = [
+        Link("zshrc"),
+    ]
+    sys_deps = ['zsh']
+
+classes = [value for value in globals().values() if isclass(value)]
+configs = [cls() for cls in classes if issubclass(cls, Config)]
+#distros = [each() for each in globals if issubclass(each, Distro)]
+
+[config.install() for config in configs]
