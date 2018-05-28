@@ -6,6 +6,7 @@
 			"colorscheme": "default"
 		},
 		"shell": {
+			"theme": "default"
 		}
 	}
 }

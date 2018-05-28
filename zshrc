@@ -4,6 +4,10 @@ export BASE16_SHELL=$HOME/.config/base16-shell/
 export LANG=en_US.UTF-8
 
 export PATH=$HOME/scripts:$PATH
+if [[ `uname` == 'Darwin' ]]; then
+    export PATH="$HOME/.brew/bin:$HOME/Library/Python/2.7/bin:$PATH"
+		export MANPATH="$HOME/.brew/share/man:/usr/share/man:/usr/local/share/man/"
+fi
 
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
@@ -21,7 +25,7 @@ compinit
 # End of lines added by compinstall
 
 powerline-daemon -q
-. /usr/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh
+. /Users/tvallee/Library/Python/2.7/lib/python/site-packages/powerline/bindings/zsh/powerline.zsh
 
 # History completion with arrows
 autoload -U up-line-or-beginning-search

@@ -1,7 +1,7 @@
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
-set rtp+=/usr/lib/python3.6/site-packages/powerline/bindings/vim
+set rtp+=/Users/tvallee/Library/Python/2.7/lib/python/site-packages/powerline/bindings/vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
@@ -10,6 +10,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'mcfiredrill/vim-liquidsoap'
 Plugin 'jceb/vim-orgmode'
+Plugin 'jeaye/color_coded'
 
 call vundle#end()
 
@@ -48,10 +49,11 @@ endif
 hi Normal guibg=NONE ctermbg=NONE
 
 imap ˙ <Esc>
-autocmd FileType * set tabstop=2|set shiftwidth=2|set noexpandtab
+autocmd FileType * set tabstop=4|set shiftwidth=4|set noexpandtab
+autocmd FileType javascript set tabstop=2|set shiftwidth=2|set noexpandtab
 autocmd FileType python set tabstop=4|set shiftwidth=4|set expandtab
 
-set autochdir
+""set autochdir
 
 ""netrw
 let g:netrw_banner=0

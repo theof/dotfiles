@@ -25,11 +25,29 @@ class Link:
     def create(self):
         os.system("ln -sf {} {}".format(self.target, self.link_name))
 
+class Dependency:
+
+    @property
+    def satisfied(self):
+        raise NotImplementedError()
+
+class SystemPackage(Dependency):
+
+    def __init__(self):
+        pass
+
+    @property
+    def satisfied(self):
+        print('Warning: SystemPackage.satisfied() is not implemented yet. '
+        'Make sure package `' + self.name + '\' is installed on your system.')
 
 class Config:
 
     def __init__(self):
         deps.append(self.sys_deps)
+
+    class CircularDependecyException(Exception):
+        pass
 
     def install(self):
         if self.pre_hook is not None:
@@ -39,8 +57,16 @@ class Config:
         if self.post_hook is not None:
             self.post_hook()
 
+    def check_depends(self):
+        """
+        Returns a list of missing dependencies classes
+        """
+        for dep in self.depends:
+            pass
+
     sys_deps = []
     links = []
+    depends = []
     pre_hook = None
     post_hook = None
 
@@ -77,6 +103,12 @@ class VimConfig(Config):
                 '"{}/.vim/bundle/Vundle.vim"'.format(home_dir))
     def post_hook(self):
         os.system('vim +PluginInstall +qall')
+        os.system('''cd ~/.vim/bundle/color_coded &&
+        rm -f CMakeCache.txt &&
+        mkdir build && cd build &&
+        cmake .. &&
+        make && make install &&
+        make clean && make clean_clang''')
 
 
 class TmuxConfig(Config):
@@ -98,7 +130,6 @@ class XConfig(Config):
     ]
 
 class Base16Shell(Config):
-    links = []
     def pre_hook(self):
         os.system("git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell")
 
@@ -114,8 +145,27 @@ class ZshConfig(Config):
     ]
     sys_deps = ['zsh']
 
+class TridactylConfig(Config):
+    links= [
+        Link("tridactylrc", link_name=".config/tridactyl/tridactylrc")
+    ]
+    def post_hook(self):
+        os.system("curl -fsSl https://raw.githubusercontent.com/cmcaine/tridactyl/master/native/install.sh | bash")
+
+
 classes = [value for value in globals().values() if isclass(value)]
 configs = [cls() for cls in classes if issubclass(cls, Config)]
 #distros = [each() for each in globals if issubclass(each, Distro)]
 
-[config.install() for config in configs]
+
+#def install():
+#    try:
+#        current = configs
+#        print('All configs successfully installed !')
+#    except Config.CircularDependencyException:
+        
+
+if __name__ == '__main__':
+    #install()
+    for each in configs:
+        each.install()
