@@ -1,0 +1,7 @@
+#!/bin/sh
+
+export WINEARCH=win32
+export WINEPREFIX=/home/theophile/.wine
+xset -dpms s off
+wine /home/theophile/.wine/drive_c/GOG\ Games/Cuphead/Cuphead.exe
+xset +dpms s on

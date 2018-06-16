@@ -1,0 +1,8 @@
+#!/bin/sh
+
+err () {
+	>&2 echo "Usage: collection_import [album_path]" && exit 1
+}
+[ $# = 1 ] || err
+scp -r "$1" guest@theof.fr:/tmp
+ssh -t guest@theof.fr beet import \'/tmp/"$(basename "$1")"\'

@@ -114,6 +114,19 @@ class ZshConfig(Config):
     ]
     sys_deps = ['zsh']
 
+class ScriptsConfig(Config):
+
+    def __init__(self):
+        super()
+        srcdir = os.path.join(os.path.dirname(__file__), self.folder)
+        for f in os.listdir(srcdir):
+            filepath = os.path.join(srcdir, f)
+            if os.path.isfile(filepath):
+                self.links.append(Link(filepath, link_name=os.path.join(self.folder, f.split('.')[0])))
+
+    folder = "scripts"
+
+
 classes = [value for value in globals().values() if isclass(value)]
 configs = [cls() for cls in classes if issubclass(cls, Config)]
 #distros = [each() for each in globals if issubclass(each, Distro)]

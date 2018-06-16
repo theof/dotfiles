@@ -1,0 +1,16 @@
+#!/bin/sh
+
+err () {
+	>&2 echo "Usage: $0 [command] [name]" && exit 1
+}
+[ $# = 2 ] || err
+cat > "~/.local/share/applications" << EOF
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=$2
+Comment=Placeholder
+Exec=$1
+Icon=placeholder.png
+Terminal=true
+EOF

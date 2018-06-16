@@ -1,0 +1,3 @@
+#!/bin/sh
+cd ~/Rack
+exec make run
