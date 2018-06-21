@@ -11,6 +11,7 @@ Plugin 'mxw/vim-jsx'
 Plugin 'mcfiredrill/vim-liquidsoap'
 Plugin 'jceb/vim-orgmode'
 Plugin 'jeaye/color_coded'
+Plugin 'tikhomirov/vim-glsl'
 
 call vundle#end()
 
@@ -49,6 +50,7 @@ endif
 hi Normal guibg=NONE ctermbg=NONE
 
 imap ˙ <Esc>
+autocmd! BufNewFile,BufRead *.vs,*.fs set ft=glsl
 autocmd FileType * set tabstop=4|set shiftwidth=4|set noexpandtab
 autocmd FileType javascript set tabstop=2|set shiftwidth=2|set noexpandtab
 autocmd FileType python set tabstop=4|set shiftwidth=4|set expandtab
