@@ -31,3 +31,6 @@ zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 bindkey "^[[A" up-line-or-beginning-search # Up
 bindkey "^[[B" down-line-or-beginning-search # Down
+
+eval $(dircolors "$HOME/dotfiles/lscolors")
+alias "ls"="ls --color=auto"
