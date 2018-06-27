@@ -113,6 +113,9 @@ class ZshConfig(Config):
         Link("zshrc"),
     ]
     sys_deps = ['zsh']
+    def post_hook(self):
+        os.system('chsh -s /bin/zsh')
+
 
 class ScriptsConfig(Config):
 
