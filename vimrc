@@ -47,9 +47,10 @@ endif
 "" do not use the theme background
 hi Normal guibg=NONE ctermbg=NONE
 
-imap ˙ <Esc>
-autocmd FileType * set tabstop=2|set shiftwidth=2|set noexpandtab
+autocmd! BufNewFile,BufRead *.vs,*.fs set ft=glsl
+autocmd FileType * set tabstop=4|set shiftwidth=4|set noexpandtab
 autocmd FileType python set tabstop=4|set shiftwidth=4|set expandtab
+autocmd FileType javascript set tabstop=2|set shiftwidth=2|set noexpandtab
 
 set autochdir
 
