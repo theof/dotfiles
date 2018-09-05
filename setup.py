@@ -8,7 +8,7 @@ deps = []
 
 def mkdirp(*args, **kwargs):
     try:
-        os.mkdir(*args, **kwargs)
+        os.makedirs(*args, **kwargs)
     except FileExistsError:
         pass
 
