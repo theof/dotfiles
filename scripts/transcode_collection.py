@@ -25,12 +25,11 @@ def transcode_collection(src="/data/music", dst="/data/music_ogg", force=False,
         target = os.path.join(dst_folder, root + target_ext)
         source = os.path.join(src_folder, f)
 
-        if not os.path.exists(target):
-            if ext != ".flac":
+        if not os.path.exists(target) or force:
+            if ext == ".mp3":
                 copyfile(source, target)
             else:
-                subprocess.run(["/usr/bin/env", "ffmpeg", "-i", source, "-vn",
-                        "-ab", "256k", target])
+                subprocess.run(["/usr/bin/env", "ffmpeg", "-i", source, target])
 
     if not os.path.exists(dst):
         os.mkdir(dst)

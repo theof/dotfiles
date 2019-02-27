@@ -1,7 +1,7 @@
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
-set rtp+=/usr/lib/python3.6/site-packages/powerline/bindings/vim
+set rtp+=/usr/lib/python3.7/site-packages/powerline/bindings/vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
@@ -10,6 +10,8 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'mcfiredrill/vim-liquidsoap'
 Plugin 'jceb/vim-orgmode'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'posva/vim-vue'
 
 call vundle#end()
 
@@ -51,6 +53,9 @@ autocmd! BufNewFile,BufRead *.vs,*.fs set ft=glsl
 autocmd FileType * set tabstop=4|set shiftwidth=4|set noexpandtab
 autocmd FileType python set tabstop=4|set shiftwidth=4|set expandtab
 autocmd FileType javascript set tabstop=2|set shiftwidth=2|set noexpandtab
+autocmd FileType javascript.jsx set tabstop=2|set shiftwidth=2|set noexpandtab
+autocmd FileType vue set tabstop=2|set shiftwidth=2|set expandtab
+au BufRead,BufNewFile *.liq set filetype=liquidsoap
 
 set autochdir
 

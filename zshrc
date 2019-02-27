@@ -3,8 +3,9 @@ export BASE16_SHELL=$HOME/.config/base16-shell/
 base16_material-palenight
 
 export LANG=en_US.UTF-8
+export EDITOR=vim
 
-export PATH=$HOME/scripts:$PATH
+export PATH=$HOME/scripts:$HOME/.npm/bin:$PATH
 
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
@@ -22,7 +23,7 @@ compinit
 # End of lines added by compinstall
 
 powerline-daemon -q
-. /usr/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh
+. /usr/lib/python3.7/site-packages/powerline/bindings/zsh/powerline.zsh
 
 # History completion with arrows
 autoload -U up-line-or-beginning-search
@@ -34,3 +35,9 @@ bindkey "^[[B" down-line-or-beginning-search # Down
 
 eval $(dircolors "$HOME/dotfiles/lscolors")
 alias "ls"="ls --color=auto"
+
+local_conf="$HOME/.zshrc.local"
+if [ -e "$local_conf" ]
+then
+	source "$local_conf"
+fi
