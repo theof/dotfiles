@@ -5,7 +5,7 @@ base16_material-palenight
 export LANG=en_US.UTF-8
 export EDITOR=vim
 
-export PATH=$HOME/scripts:$HOME/.npm/bin:$HOME/.cargo/bin:$PATH
+export "PATH=$HOME/scripts:$HOME/.npm/bin:$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
 
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
