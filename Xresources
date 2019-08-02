@@ -53,13 +53,12 @@
 *color20:      base04
 *color21:      base06
 
-Xft.dpi: 96
+Xft.dpi: 284
 Xft.hinting: true
-
 URxvt.scrollBar: false
 ! URxvt.font: 9x15
 
 URxvt*transparent: true
 URxvt*shading: 20
-urxvt*font: xft:Monaco\ for\ Powerline:pixelsize=13
-! urxvt*letterSpace: -1
+urxvt*font: xft:Monaco\ for\ Powerline:pixelsize=34
+urxvt*letterSpace: 0
