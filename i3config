@@ -108,10 +108,12 @@ bindsym $mod+Shift+l exec "screenlock"
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
 
-#TODO Alsa Audio controls
-#bindsym XF86AudioMute exec add 3 #--no-startup-id pactl set-sink-mute 0 toggle # mute sound
-#bindsym XF86AudioLowerVolume exec add 2 #--no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-#bindsym XF86AudioRaiseVolume exec add 1 #--no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+# Alsa Audio controls
+bindsym XF86AudioMute exec amixer -q sset Master toggle
+bindsym XF86AudioLowerVolume exec amixer -q sset Master 3%-
+bindsym XF86AudioRaiseVolume exec amixer -q sset Master 3%+
+bindsym XF86AudioMicMute exec amixer sset Capture toggle
+
 #TODO Media player controls
 #bindsym XF86AudioPlay exec add 7 #playerctl play
 #bindsym XF86AudioPause exec add 8 #playerctl pause
