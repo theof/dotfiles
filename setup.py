@@ -116,6 +116,11 @@ class ZshConfig(Config):
     def post_hook(self):
         os.system('chsh -s /bin/zsh')
 
+class DunstConfig(Config):
+    links = [
+        Link("dunstrc", link_name=".config/dunst/dunstrc"),
+    ]
+    sys_deps = ['i3']
 
 class ScriptsConfig(Config):
 

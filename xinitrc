@@ -5,4 +5,5 @@ export GDK_DPI_SCALE=0.5
 xrdb -merge ~/.Xresources
 xrandr --output HDMI2 --right-of eDP1 --scale-from 3840x2160
 ~/.fehbg &
+/usr/bin/dunst &
 exec i3
