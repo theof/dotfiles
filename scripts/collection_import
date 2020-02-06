@@ -4,5 +4,7 @@ err () {
 	>&2 echo "Usage: collection_import [album_path]" && exit 1
 }
 [ $# = 1 ] || err
+
 scp -r "$1" guest@theof.fr:/tmp
-ssh -t guest@theof.fr beet import \'/tmp/"$(basename "$1")"\'
+quoted="$(echo "/tmp/$(basename "$1")" | sed -e "s/'/'\\\\''/g; 1s/^/'/; \$s/\$/'/")"
+exec ssh -t guest@theof.fr beet import "$quoted"

@@ -12,6 +12,8 @@ Plugin 'mcfiredrill/vim-liquidsoap'
 Plugin 'jceb/vim-orgmode'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'posva/vim-vue'
+Plugin 'dense-analysis/ale'
+Plugin 'rust-lang/rust.vim'
 
 call vundle#end()
 
@@ -70,3 +72,23 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 set splitbelow
 set splitright
+
+"" Clang format
+let clang_format=expand("~/.vim/clang-format.py")
+if filereadable(g:clang_format)
+	"execute "map <C-K> :pyf ".g:clang_format."<cr>"
+    "execute "imap <C-K> <c-o>:pyf ".g:clang_format."<cr>"
+
+    function! Formatonsave()
+        let l:formatdiff = 1
+        execute "pyf ".g:clang_format
+    endfunction
+    autocmd BufWritePre *.h,*.cc,*.cpp call Formatonsave()
+endif
+let g:ale_c_build_dir_names = ['build', 'release']
+
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+let g:rustfmt_autosave = 1
+autocmd filetype rust set colorcolumn=100
+let g:ale_linters = {'rust': ['rls']}
