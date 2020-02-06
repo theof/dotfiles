@@ -6,4 +6,5 @@ xrdb -merge ~/.Xresources
 xrandr --output HDMI2 --right-of eDP1 --scale-from 3840x2160
 ~/.fehbg &
 /usr/bin/dunst &
-exec i3
+compton &
+exec i3 >> /tmp/i3log

@@ -60,5 +60,5 @@ URxvt.scrollBar: false
 
 URxvt*transparent: true
 URxvt*shading: 20
-urxvt*font: xft:Monaco\ for\ Powerline:pixelsize=34
+urxvt*font: xft:Monaco\ for\ Powerline:pixelsize=36
 urxvt*letterSpace: 0

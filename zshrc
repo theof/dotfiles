@@ -23,7 +23,7 @@ compinit
 # End of lines added by compinstall
 
 powerline-daemon -q
-. "$HOME/.local/lib/python3.7/site-packages/powerline/bindings/zsh/powerline.zsh"
+. "$HOME/.local/lib/python3.8/site-packages/powerline/bindings/zsh/powerline.zsh"
 
 # History completion with arrows
 autoload -U up-line-or-beginning-search
@@ -41,3 +41,4 @@ if [ -e "$local_conf" ]
 then
 	source "$local_conf"
 fi
+source "$HOME/.secrets.env"

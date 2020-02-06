@@ -14,6 +14,7 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'posva/vim-vue'
 Plugin 'dense-analysis/ale'
 Plugin 'rust-lang/rust.vim'
+Plugin 'tpope/vim-fugitive'
 
 call vundle#end()
 
@@ -52,7 +53,6 @@ endif
 hi Normal guibg=NONE ctermbg=NONE
 
 autocmd! BufNewFile,BufRead *.vs,*.fs set ft=glsl
-autocmd FileType * set tabstop=4|set shiftwidth=4|set noexpandtab
 autocmd FileType python set tabstop=4|set shiftwidth=4|set expandtab
 autocmd FileType javascript set tabstop=2|set shiftwidth=2|set noexpandtab
 autocmd FileType javascript.jsx set tabstop=2|set shiftwidth=2|set noexpandtab
@@ -85,6 +85,7 @@ if filereadable(g:clang_format)
     endfunction
     autocmd BufWritePre *.h,*.cc,*.cpp call Formatonsave()
 endif
+
 let g:ale_c_build_dir_names = ['build', 'release']
 
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
