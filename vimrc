@@ -1,24 +1,28 @@
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
+
 set rtp+=/usr/lib/python3.8/site-packages/powerline/bindings/vim
-call vundle#begin()
 
-let g:ale_set_balloons = 1
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+call plug#begin("~/.vim/plugged")
+
 let g:powerline_loaded = 1
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'chriskempson/base16-vim'
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
-Plugin 'mcfiredrill/vim-liquidsoap'
-Plugin 'jceb/vim-orgmode'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'posva/vim-vue'
-Plugin 'dense-analysis/ale'
-Plugin 'rust-lang/rust.vim'
-Plugin 'tpope/vim-fugitive'
-
-call vundle#end()
+Plug 'VundleVim/Vundle.vim'
+Plug 'chriskempson/base16-vim'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'mcfiredrill/vim-liquidsoap'
+Plug 'jceb/vim-orgmode'
+Plug 'kchmck/vim-coffee-script'
+Plug 'posva/vim-vue'
+Plug 'rust-lang/rust.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+call plug#end()
 
 filetype plugin indent on
 
@@ -91,16 +95,5 @@ if filereadable(g:clang_format)
     autocmd BufWritePre *.h,*.cc,*.cpp call Formatonsave()
 endif
 
-let g:ale_c_build_dir_names = ['build', 'release']
-
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
-nmap <silent> <C-h> <Plug>(ale_hover)
-nmap <silent> <C-d> <Plug>(ale_go_to_definition)
-nmap <silent> <C-l> <Plug>(ale_go_to_definition_in_vsplit)
 let g:rustfmt_autosave = 1
 autocmd filetype rust set colorcolumn=100
-let g:ale_linters = {'rust': ['rls'], 'cpp': ['clangd', 'cppcheck'], 'go': ['gopls']}
-
-let g:ale_c_parse_compile_commands = 1
-nmap <silent> <C-f> <Plug>(ale_fix)
