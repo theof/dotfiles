@@ -134,6 +134,12 @@ class ScriptsConfig(Config):
 
     folder = "scripts"
 
+class RangerConfig(Config):
+    links = [
+        Link("ranger", ".config/ranger"),
+    ]
+    sys_deps = ['ranger']
+
 
 classes = [value for value in globals().values() if isclass(value)]
 configs = [cls() for cls in classes if issubclass(cls, Config)]
