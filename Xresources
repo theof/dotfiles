@@ -58,8 +58,8 @@ Xft.hinting: true
 URxvt.scrollBar: false
 ! URxvt.font: 9x15
 
-URxvt*transparent: true
+URxvt*transparent: false
 URxvt*shading: 20
 ! urxvt*font: xft:Monaco\ for\ Powerline:pixelsize=36
-urxvt*font: xft:Monaco\ for\ Powerline:pixelsize=17
-urxvt*letterSpace: 0
+urxvt*font: xft:Monaco\ for\ Powerline:pixelsize=16
+urxvt*letterSpace: -1

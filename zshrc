@@ -1,6 +1,6 @@
 export BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
-base16_material-palenight
+#base16_gruvbox-light-soft
 
 export LANG=en_US.UTF-8
 export EDITOR=vim
@@ -42,3 +42,17 @@ then
 	source "$local_conf"
 fi
 source "$HOME/.secrets.env"
+export JAVA_HOME=/lib/jvm/java-11-openjdk
+export PATH=$JAVA_HOME/bin:$HOME/.bin:$PATH
+alias "vnc"="/usr/bin/x0vncserver -passwordfile=/home/theof/.vnc/passwd -display=:0 -HostsFile=/home/theof/.vnc/hosts -AlwaysShared=1 -Protocol3.3 -CompareFB=1"
+
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
+export MONGODB_CONNECTION_STRING="mongodb://root:dorp@127.0.0.1/?authSource=admin"
+
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+	    ssh-agent -t 1h > "$XDG_RUNTIME_DIR/ssh-agent.env"
+fi
+if [[ ! "$SSH_AUTH_SOCK" ]]; then
+	    source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
+fi

@@ -1,5 +1,5 @@
 #!/bin/sh
-i3lock -i ~/.config/background4k.png -t &
+swaylock -i ~/.config/background4k.png -s stretch &
 disown
 sleep 1
 exec xset dpms force off

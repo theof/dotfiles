@@ -6,6 +6,9 @@ xrdb -merge ~/.Xresources
 #xrandr --output HDMI2 --right-of eDP1 --scale-from 3840x2160
 #xrandr --output HDMI2 --auto --output eDP1 --off
 ~/.fehbg &
-/usr/bin/dunst &
-compton &
+
+# firefox embeds its own notification agent now
+#/usr/bin/dunst &
+
+picom --experimental-backends &
 exec i3 >> /tmp/i3log
