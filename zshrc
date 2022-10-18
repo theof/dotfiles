@@ -23,7 +23,7 @@ compinit
 # End of lines added by compinstall
 
 powerline-daemon -q
-. /usr/lib/python3.8/site-packages/powerline/bindings/zsh/powerline.zsh
+. "${POWERLINE_LOCATION}/powerline/bindings/zsh/powerline.zsh"
 
 # History completion with arrows
 autoload -U up-line-or-beginning-search

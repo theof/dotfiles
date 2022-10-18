@@ -97,6 +97,11 @@ class XConfig(Config):
         Link("xinitrc")
     ]
 
+class ProfileConfig(Config):
+    links = [
+        Link("profile"),
+    ]
+
 class Base16Shell(Config):
     links = []
     def pre_hook(self):
