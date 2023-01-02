@@ -97,9 +97,9 @@ class XConfig(Config):
         Link("xinitrc")
     ]
 
-class ProfileConfig(Config):
+class ZProfileConfig(Config):
     links = [
-        Link("profile"),
+        Link("zprofile"),
     ]
 
 class Base16Shell(Config):
