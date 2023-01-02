@@ -1,11 +1,9 @@
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
-set rtp+=$POWERLINE_LOCATION/powerline/bindings/vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'chriskempson/base16-vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'mcfiredrill/vim-liquidsoap'
@@ -14,8 +12,15 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'posva/vim-vue'
 Plugin 'dense-analysis/ale'
 Plugin 'rust-lang/rust.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'morhetz/gruvbox'
 
 call vundle#end()
+
+let g:gruvbox_italic=1
+colorscheme gruvbox
 
 filetype plugin indent on
 
@@ -42,14 +47,6 @@ au BufRead,BufNewFile *.liq set filetype=liquidsoap
 set nu
 set foldmethod=syntax
 set colorcolumn=80
-
-"" base-16 shell stuff
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
-endif
-"" do not use the theme background
-hi Normal guibg=NONE ctermbg=NONE
 
 autocmd! BufNewFile,BufRead *.vs,*.fs set ft=glsl
 autocmd FileType * set tabstop=4|set shiftwidth=4|set noexpandtab
@@ -90,5 +87,7 @@ let g:ale_c_build_dir_names = ['build', 'release']
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 let g:rustfmt_autosave = 1
+let g:maplocalleader = ","
 autocmd filetype rust set colorcolumn=100
 let g:ale_linters = {'rust': ['rls']}
+let g:airline_powerline_fonts = 1

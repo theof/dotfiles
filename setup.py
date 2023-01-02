@@ -102,17 +102,6 @@ class ZProfileConfig(Config):
         Link("zprofile"),
     ]
 
-class Base16Shell(Config):
-    links = []
-    def pre_hook(self):
-        os.system("git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell")
-
-class PowerlineConfig(Config):
-    links = [
-        Link("powerline", ".config/powerline"),
-    ]
-    sys_deps = ['powerline']
-
 class ZshConfig(Config):
     links = [
         Link("zshrc"),
@@ -121,7 +110,17 @@ class ZshConfig(Config):
     def post_hook(self):
         os.system('chsh -s /bin/zsh')
 
+class AlacrittyConfig(Config):
+    links = [
+        Link("alacritty.yml")
+    ]
+    sys_deps = ['alacritty']
 
+class DunstConfig(Config):
+    links = [
+        Link("dunstrc", link_name=".config/dunst/dunstrc")
+    ]
+    sys_deps = ["dunst"]
 class ScriptsConfig(Config):
 
     def __init__(self):
