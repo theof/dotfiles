@@ -44,27 +44,6 @@ class Config:
     pre_hook = None
     post_hook = None
 
-"""
-class Distro:
-
-    def __init__(self):
-        pass
-
-    is_candidate = False
-
-    @property
-    def package_manager(self):
-        raise NotImplementedError
-"""
-#
-
-"""
-class ArchLinux(Distro):
-
-    def __init__(self):    
-        pass
-#
-"""
 
 class VimConfig(Config):
     links = [
@@ -136,6 +115,17 @@ class ScriptsConfig(Config):
 
 classes = [value for value in globals().values() if isclass(value)]
 configs = [cls() for cls in classes if issubclass(cls, Config)]
-#distros = [each() for each in globals if issubclass(each, Distro)]
+arch_install = False
+if arch_install:
+    for config in configs:
+        config.install()
+else:
 
-[config.install() for config in configs]
+    for config in [
+        VimConfig(),
+        TmuxConfig(),
+        ZshConfig(),
+        #AlacrittyConfig(),
+        ScriptsConfig()
+    ]:
+        config.install()

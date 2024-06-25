@@ -16,11 +16,13 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'morhetz/gruvbox'
+Plugin 'tikhomirov/vim-glsl'
 
 call vundle#end()
 
 let g:gruvbox_italic=1
 colorscheme gruvbox
+set bg=dark
 
 filetype plugin indent on
 
@@ -55,8 +57,6 @@ autocmd FileType javascript set tabstop=2|set shiftwidth=2|set noexpandtab
 autocmd FileType javascript.jsx set tabstop=2|set shiftwidth=2|set noexpandtab
 autocmd FileType vue set tabstop=2|set shiftwidth=2|set expandtab
 au BufRead,BufNewFile *.liq set filetype=liquidsoap
-
-set autochdir
 
 ""netrw
 let g:netrw_banner=0
