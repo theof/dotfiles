@@ -5,7 +5,7 @@ from shutil import copyfile
 import subprocess
 import os
 
-def transcode_collection(src="/data/music", dst="/data/music_ogg", force=False,
+def transcode_collection(src="/home/theof/dj", dst="/home/theof/dj_mp3", force=False,
         nthreads=8):
     """
       src: collection's original path
@@ -20,7 +20,7 @@ def transcode_collection(src="/data/music", dst="/data/music_ogg", force=False,
         src_folder = os.path.join(src, folder)
 
         (root, ext) = os.path.splitext(f)
-        target_ext = ext if (ext != ".flac") else '.ogg'
+        target_ext = '.mp3'
 
         target = os.path.join(dst_folder, root + target_ext)
         source = os.path.join(src_folder, f)

@@ -63,10 +63,6 @@ let g:netrw_banner=0
 let g:netrw_liststyle = 3
 
 "" Split settings
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
 set splitbelow
 set splitright
 
@@ -86,8 +82,15 @@ let g:ale_c_build_dir_names = ['build', 'release']
 
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+" Make go-to-definition open in a new tab
+nmap <silent> gd <Plug>(ale_go_to_definition)
+nmap <silent> gr <Plug>(ale_find_references)
+nmap <silent> K <Plug>(ale_hover)
 let g:rustfmt_autosave = 1
 let g:maplocalleader = ","
 autocmd filetype rust set colorcolumn=100
-let g:ale_linters = {'rust': ['rls']}
+let g:ale_linters = {'rust': ['analyzer', 'cargo', 'clippy']}
+let g:ale_hover_to_floating_preview = 1
+let g:ale_completion_enabled = 1
 let g:airline_powerline_fonts = 1
